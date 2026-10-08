@@ -1,0 +1,294 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #050505;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(34, 211, 238, 0.055), transparent 28%),
+    radial-gradient(circle at 85% 20%, rgba(139, 92, 246, 0.055), transparent 28%),
+    #050505;
+  color: #f5f5f5;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.25);
+  color: white;
+}
+
+section {
+  scroll-margin-top: 7rem;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 640px) {
+  section {
+    scroll-margin-top: 6rem;
+  }
+}
+
+/* Premium motion utilities */
+@keyframes portfolio-float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+@keyframes portfolio-pulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.04);
+  }
+}
+
+.motion-float {
+  animation: portfolio-float 6s ease-in-out infinite;
+}
+
+.motion-pulse {
+  animation: portfolio-pulse 5s ease-in-out infinite;
+}
+
+.portfolio-glow {
+  position: relative;
+}
+
+.portfolio-glow::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(45, 212, 191, 0.16),
+      transparent 35%,
+      rgba(139, 92, 246, 0.14)
+    );
+  z-index: -1;
+}
+
+.portfolio-glow:hover::after {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-float,
+  .motion-pulse {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
+/* =========================================
+   Phase 8 — Premium Interaction Layer
+   ========================================= */
+
+.interactive-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 280ms ease,
+    box-shadow 280ms ease;
+}
+
+.interactive-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(45, 212, 191, 0.11),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 85% 90%,
+      rgba(139, 92, 246, 0.10),
+      transparent 34%
+    );
+  transition: opacity 300ms ease;
+  z-index: -1;
+}
+
+.interactive-card:hover {
+  transform: translateY(-4px);
+}
+
+.interactive-card:hover::before {
+  opacity: 1;
+}
+
+.interactive-link {
+  position: relative;
+  transition:
+    color 200ms ease,
+    opacity 200ms ease;
+}
+
+.interactive-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -4px;
+  height: 1px;
+  background: currentColor;
+  transition: right 240ms ease;
+}
+
+.interactive-link:hover::after {
+  right: 0;
+}
+
+.filter-pill {
+  transition:
+    transform 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+
+.filter-pill:hover {
+  transform: translateY(-1px);
+}
+
+.text-gradient {
+  background-image:
+    linear-gradient(
+      120deg,
+      hsl(var(--foreground)),
+      rgba(45, 212, 191, 0.92),
+      rgba(139, 92, 246, 0.92)
+    );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.section-eyebrow {
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interactive-card,
+  .filter-pill,
+  .interactive-link {
+    transition: none;
+  }
+
+  .interactive-card:hover,
+  .filter-pill:hover {
+    transform: none;
+  }
+}
+/* PHASE 10 PREMIUM POLISH */
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  background: #09090b;
+  color: #f4f4f5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(45, 212, 191, 0.24);
+  color: #f4f4f5;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(45, 212, 191, 0.9);
+  outline-offset: 3px;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  max-width: 100%;
+}
+
+.portfolio-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(161, 161, 170, 0.35) transparent;
+}
+
+@media (max-width: 640px) {
+  body {
+    overflow-x: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
